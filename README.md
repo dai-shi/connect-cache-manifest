@@ -23,7 +23,7 @@ In app.js:
       }, {
         dir: __dirname + '/public/css',
         prefix: '/css/'
-      },
+      }],
       networks: ['*'],
       fallbacks: []
     }));
