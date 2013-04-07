@@ -1,0 +1,29 @@
+{
+  "name": "connect-cache-manifest",
+  "description": "An express/connect middleware to generate HTML5 cache manifest file",
+  "version": "0.1.0",
+  "author": "Daishi Kato <daishi@axlight.com>",
+  "dependencies": {
+    "wrench": "~1.4.4",
+    "async": "~0.2.6"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dai-shi/connect-cache-manifest.git"
+  },
+  "keywords": [
+    "express",
+    "connect",
+    "html5",
+    "cache",
+    "manifest"
+  ],
+  "main": "./connect-cache-manifest.js",
+  "license": "BSD",
+  "engines": {
+    "node": ">=0.8.4"
+  }
+}
