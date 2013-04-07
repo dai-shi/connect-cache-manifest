@@ -16,7 +16,7 @@ In app.js:
     var cacheManifest = require('connect-cache-manifest');
     var app = express();
     app.use(cacheManifest({
-      manifestPath: 'application.manifest',
+      manifestPath: '/application.manifest',
       files: [{
         file: __dirname + '/public/js/foo.js',
         path: '/js/foo.js'
