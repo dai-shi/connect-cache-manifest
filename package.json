@@ -1,7 +1,7 @@
 {
   "name": "connect-cache-manifest",
-  "description": "An express/connect middleware to generate HTML5 cache manifest file",
-  "version": "0.1.0",
+  "description": "Express/connect middleware to generate HTML5 cache manifest file",
+  "version": "0.1.1",
   "author": "Daishi Kato <daishi@axlight.com>",
   "dependencies": {
     "wrench": "~1.4.4",

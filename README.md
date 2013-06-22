@@ -1,7 +1,7 @@
 connect-cache-manifest
 ======================
 
-An express/connect middleware to generate HTML5 cache manifest file.
+Express/connect middleware to generate HTML5 cache manifest file.
 This module is highly inspired by
 <https://github.com/dustMason/connect-offline/>.
 
