@@ -5,7 +5,7 @@ Express/connect middleware to generate HTML5 cache manifest file.
 This module is highly inspired by
 <https://github.com/dustMason/connect-offline/>.
 
-The reason I forkded as a new project:
+The original reason I forked as a new project:
 <https://github.com/dustMason/connect-offline/issues/1>
 
 How to use
@@ -44,7 +44,3 @@ Options
 * networks: list of strings for network entries.
 * fallbacks: list of strings for fallback entries.
 
-TODOs
------
-
-* some more tests
