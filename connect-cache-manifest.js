@@ -44,7 +44,10 @@ function expandDirectories(entries) {
       }
       wrench.readdirSyncRecursive(entry.dir).forEach(function(name) {
         var file = path.join(entry.dir, name);
-        if (fs.statSync(file).isFile()) {
+        if (fs.statSync(file).isFile() && (!entry.ignore || !entry.ignore(file))) {
+          if (entry.replace) {
+            name = entry.replace(name);
+          }
           files.push({
             file: file,
             path: entry.prefix + name

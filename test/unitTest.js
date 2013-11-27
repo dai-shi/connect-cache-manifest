@@ -18,6 +18,25 @@ describe('unit test for cacheManifest', function() {
     assert.ok(files[0].path === '/js/foo.js' || files[1].path === '/js/foo.js');
   });
 
+  it('should get expand directories (ignore, replace)', function() {
+    var expandDirectories = theModule.expandDirectories;
+
+    var files = expandDirectories([{
+      dir: './test/public',
+      prefix: '/',
+      ignore: function(x) {
+        return x.indexOf('bar') >= 0;
+      },
+      replace: function(x) {
+        return x.replace('foo', 'foo2');
+      }
+    }]);
+
+    assert.equal(files.length, 1);
+    assert.ok((files[0].file.match(/\/js\/foo.js$/)));
+    assert.ok(files[0].path === '/js/foo2.js');
+  });
+
   it('should get last modified time', function(done) {
     var getLastModified = theModule.getLastModified;
 
@@ -44,7 +63,6 @@ describe('unit test for cacheManifest', function() {
       fallbacks: []
     }, 999);
     assert.equal(manifest, 'CACHE MANIFEST\n# 999\n\nCACHE:\n/js/foo.js\n\nNETWORK:\n*\n\nFALLBACK:\n');
-
   });
 
 });
