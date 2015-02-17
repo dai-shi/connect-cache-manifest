@@ -20,6 +20,7 @@ In app.js:
     var app = express();
     app.use(cacheManifest({
       manifestPath: '/application.manifest',
+      cdn: ['http://yui.yahooapis.com/pure/0.5.0/pure-min.css']
       files: [{
         file: __dirname + '/public/js/foo.js',
         path: '/js/foo.js'
@@ -40,7 +41,9 @@ Options
 -------
 
 * manifestPath: path name for the manifest file.
+* cdn: list of cdn's you wish you cache in your manifest file
 * files: list of items to cache entries; an item is either `{ dir: '<dir path>', prefix: '<url prefix>'}` or `{ file: '<file path>', path: '<url path>'}`
 * networks: list of strings for network entries.
 * fallbacks: list of strings for fallback entries.
+
 
