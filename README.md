@@ -20,7 +20,7 @@ In app.js:
     var app = express();
     app.use(cacheManifest({
       manifestPath: '/application.manifest',
-      cdn: ['http://yui.yahooapis.com/pure/0.5.0/pure-min.css']
+      cdn: ['http://yui.yahooapis.com/pure/0.5.0/pure-min.css'],
       files: [{
         file: __dirname + '/public/js/foo.js',
         path: '/js/foo.js'
