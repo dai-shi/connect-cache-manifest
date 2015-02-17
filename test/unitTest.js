@@ -59,6 +59,7 @@ describe('unit test for cacheManifest', function() {
         file: __dirname + '/public/js/foo.js',
         path: '/js/foo.js'
       }],
+      cdn: [],
       networks: ['*'],
       fallbacks: []
     }, 999);

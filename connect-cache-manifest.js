@@ -92,6 +92,9 @@ function generateManifest(options, lastModified) {
   options.files.forEach(function(x) {
     a.push(x.path);
   });
+  options.cdn.forEach(function(x) {
+    a.push(x);
+  });
   a.push('');
   a.push('NETWORK:');
   options.networks.forEach(function(x) {
@@ -117,6 +120,7 @@ function cacheManifest(options) {
   }];
   options.networks = options.networks || ['*'];
   options.fallbacks = options.fallbacks || [];
+  options.cdn = options.cdn || [];
 
   options.files = expandDirectories(options.files);
 
