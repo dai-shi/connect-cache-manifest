@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2013, Daishi Kato <daishi@axlight.com>
+  Copyright (C) 2013-2015, Daishi Kato <daishi@axlight.com>
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
@@ -29,17 +29,21 @@ var fs = require('fs');
 var async = require('async');
 var wrench = require('wrench');
 
+var isAbsolute = path.isAbsolute || function(file) {
+  return file.lastIndexOf(path.sep, 0) === 0; // only works for unix-like systems
+};
+
 function expandDirectories(entries) {
   var cwd = process.cwd();
   var files = [];
   entries.forEach(function(entry) {
     if (entry.file && entry.path) {
-      if (entry.file.lastIndexOf(path.sep, 0) !== 0) {
+      if (!isAbsolute(entry.file)) {
         entry.file = path.join(cwd, entry.file);
       }
       files.push(entry);
     } else if (entry.dir && entry.prefix) {
-      if (entry.dir.lastIndexOf(path.sep, 0) !== 0) {
+      if (!isAbsolute(entry.dir)) {
         entry.dir = path.join(cwd, entry.dir);
       }
       wrench.readdirSyncRecursive(entry.dir).forEach(function(name) {
@@ -62,25 +66,25 @@ function expandDirectories(entries) {
 function getLastModified(files, callback) {
   var lastModified = 0;
   async.each(files, function(x, cb) {
-    fs.stat(x.file, function(err, stats) {
-      if (err) {
-        cb(err);
-      } else {
-        if (stats.mtime > lastModified) {
-          lastModified = stats.mtime;
+      fs.stat(x.file, function(err, stats) {
+        if (err) {
+          cb(err);
+        } else {
+          if (stats.mtime > lastModified) {
+            lastModified = stats.mtime;
+          }
+          cb();
         }
-        cb();
+      });
+    },
+
+    function(err) {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, lastModified);
       }
     });
-  },
-
-  function(err) {
-    if (err) {
-      callback(err);
-    } else {
-      callback(null, lastModified);
-    }
-  });
 }
 
 function generateManifest(options, lastModified) {

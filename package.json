@@ -1,7 +1,7 @@
 {
   "name": "connect-cache-manifest",
   "description": "Express/connect middleware to generate HTML5 cache manifest file",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Daishi Kato <daishi@axlight.com>",
   "dependencies": {
     "wrench": "~1.4.4",
@@ -22,7 +22,7 @@
     "manifest"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "mocha"
   },
   "main": "./connect-cache-manifest.js",
   "license": "BSD",
