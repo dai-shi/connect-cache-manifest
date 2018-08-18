@@ -11,7 +11,7 @@ The original reason I forked as a new project:
 How to use
 ----------
 
-    % npm install connect-cache-manifest
+    $ npm install connect-cache-manifest
 
 In app.js:
 
